@@ -1,19 +1,33 @@
 class RomanosParser
 
-	def parser(valor)
-		if(valor == "I")
+	def parser(numeroRomano)
+
+		soma = 0
+
+		numeroRomano.length.times do |i|
+			letraRomana = numeroRomano[i]
+			soma += getValor(letraRomana)
+
+		end
+		
+		return soma
+
+	end
+
+	def getValor(numeroRomano)
+		if(numeroRomano == "I")
 			return 1
-		elsif(valor == "V")
+		elsif(numeroRomano == "V")
 			return 5
-		elsif(valor == "X")
+		elsif(numeroRomano == "X")
 			return 10
-		elsif(valor == "L")
+		elsif(numeroRomano == "L")
 			return 50
-		elsif(valor == "C")
+		elsif(numeroRomano == "C")
 			return 100
-		elsif(valor == "D")
+		elsif(numeroRomano == "D")
 			return 500
-		else(valor == "M")
+		else(numeroRomano == "M")
 			return 1000
 		end
 	end
@@ -41,14 +55,25 @@ describe RomanosParser do
 	it "deve retornar numero arabico de L" do
 		expect(@romanosParser.parser("L")).to eql 50
 	end
+
 	it "deve retornar numero arabico de C" do
 		expect(@romanosParser.parser("C")).to eql 100
 	end
+
 	it "deve retornar numero arabico de D" do
 		expect(@romanosParser.parser("D")).to eql 500
 	end
+
 	it "deve retornar numero arabico de M" do
 		expect(@romanosParser.parser("M")).to eql 1000
+	end
+
+	it "deve somar os valores de XX corretamente" do
+		expect(@romanosParser.parser("XX")).to eql 20
+	end
+
+	it "deve somar os valores de CLX corretamente" do
+		expect(@romanosParser.parser("CLX")).to eql 160
 	end
 
 end
