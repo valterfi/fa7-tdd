@@ -6,7 +6,20 @@ class RomanosParser
 
 		numeroRomano.length.times do |i|
 			letraRomana = numeroRomano[i]
-			soma += getValor(letraRomana)
+			proxLetraRomana = numeroRomano[i+1]
+
+			valor = getValor(letraRomana)
+
+			unless proxLetraRomana.nil?
+				proxValor = getValor(proxLetraRomana)
+				if(soma == 0 && (valor < proxValor))
+					raise "numero romano invalido"
+				else(valor < proxValor)
+
+				end				
+			end
+
+			soma += valor
 
 		end
 		
@@ -30,6 +43,11 @@ class RomanosParser
 		else(numeroRomano == "M")
 			return 1000
 		end
+
+	end
+
+	def verificaProximaLetraDeI
+		
 	end
 
 end
@@ -74,6 +92,14 @@ describe RomanosParser do
 
 	it "deve somar os valores de CLX corretamente" do
 		expect(@romanosParser.parser("CLX")).to eql 160
+	end
+
+	it "deve subtrair uma unidade se letra I e colocada diante da X, " do
+		expect(@romanosParser.parser("IX")).to eql 9
+	end
+
+	it "deve subtrair uma unidade se letra I e colocada diante da V, " do
+		expect(@romanosParser.parser("IV")).to eql 4
 	end
 
 end
