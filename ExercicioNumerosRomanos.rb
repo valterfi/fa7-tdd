@@ -3,8 +3,10 @@ class RomanosParser
 	def parser(valor)
 		if(valor == "I")
 			return 1
-		else(valor == "V")
+		elsif(valor == "V")
 			return 5
+		else(valor == "X")
+			return 10
 		end
 	end
 
@@ -22,6 +24,12 @@ describe RomanosParser do
 
 		romanosParser = RomanosParser.new
 		expect(romanosParser.parser("V")).to eql 5
+	end
+
+	it "deve retornar numero arabico de X" do
+
+		romanosParser = RomanosParser.new
+		expect(romanosParser.parser("X")).to eql 10
 	end
 
 end
