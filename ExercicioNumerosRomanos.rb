@@ -13,23 +13,21 @@ class RomanosParser
 end
 
 describe RomanosParser do 
+
+	before(:each) do 
+		@romanosParser = RomanosParser.new
+	end
 	
 	it "deve retornar numero arabico de I" do
-
-		romanosParser = RomanosParser.new
-		expect(romanosParser.parser("I")).to eql 1
+		expect(@romanosParser.parser("I")).to eql 1
 	end
 
 	it "deve retornar numero arabico de V" do
-
-		romanosParser = RomanosParser.new
-		expect(romanosParser.parser("V")).to eql 5
+		expect(@romanosParser.parser("V")).to eql 5
 	end
 
 	it "deve retornar numero arabico de X" do
-
-		romanosParser = RomanosParser.new
-		expect(romanosParser.parser("X")).to eql 10
+		expect(@romanosParser.parser("X")).to eql 10
 	end
 
 end
