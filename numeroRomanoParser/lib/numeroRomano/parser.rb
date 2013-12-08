@@ -4,22 +4,31 @@ module NumeroRomano
 		def parser(numeroRomano)
 
 			soma = 0
+			pularLetra = false
 
 			numeroRomano.length.times do |i|
-				letraRomana = numeroRomano[i]
-				proxLetraRomana = numeroRomano[i+1]
-
-				valor = getValor(letraRomana)
-
-				unless proxLetraRomana.nil?
-					proxValor = getValor(proxLetraRomana)
-					if(soma == 0 && (valor < proxValor))
-						raise "numero romano invalido"
-					else(valor < proxValor)
-
-					end				
+				if(pularLetra)
+					pularLetra = false
+					next
 				end
 
+
+				letraRomana = numeroRomano[i]	
+				valor = getValor(letraRomana)
+
+				if(letraRomana == "I")
+					proxLetraRomana = numeroRomano[i+1]
+					unless proxLetraRomana.nil?						
+						if(proxLetraRomana == "V" || proxLetraRomana == "X")
+							proxValor = getValor(proxLetraRomana)
+							 soma += proxValor - valor
+							 pularLetra = true
+							 next
+						end			
+
+					end
+
+				end
 				soma += valor
 
 			end
@@ -45,10 +54,6 @@ module NumeroRomano
 				return 1000
 			end
 
-		end
-
-		def verificaProximaLetraDeI
-			
 		end
 
 	end
