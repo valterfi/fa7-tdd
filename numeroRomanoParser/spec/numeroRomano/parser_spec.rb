@@ -42,13 +42,30 @@ module NumeroRomano
 		expect(romanosParser.parser("CLX")).to eql 160
 	end
 
-	it "deve subtrair uma unidade se letra I e colocada diante da V, " do
+	it "deve subtrair uma unidade se letra I e colocada diante da V" do
 		expect(romanosParser.parser("IV")).to eql 4
 	end
 
-	it "deve subtrair uma unidade se letra I e colocada diante da X, " do
+	it "deve subtrair uma unidade se letra I e colocada diante da X" do
 		expect(romanosParser.parser("CXXIX")).to eql 129
 	end
+
+	it "deve subtrair uma unidade se letra X e colocada diante da L" do
+		expect(romanosParser.parser("XL")).to eql 40
+	end
+
+	it "deve subtrair uma unidade se letra X e colocada diante da L" do
+		expect(romanosParser.parser("XC")).to eql 90
+	end
+
+	it "deve subtrair uma unidade se letra C e colocada diante da D" do
+		expect(romanosParser.parser("CD")).to eql 400
+	end
+
+	it "deve subtrair uma unidade se letra C e colocada diante da M" do
+		expect(romanosParser.parser("CM")).to eql 900
+	end
+
 		
 		
 	end

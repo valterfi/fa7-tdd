@@ -29,6 +29,35 @@ module NumeroRomano
 					end
 
 				end
+
+				if(letraRomana == "X")
+					proxLetraRomana = numeroRomano[i+1]
+					unless proxLetraRomana.nil?						
+						if(proxLetraRomana == "L" || proxLetraRomana == "C")
+							proxValor = getValor(proxLetraRomana)
+							 soma += proxValor - valor
+							 pularLetra = true
+							 next
+						end			
+
+					end
+
+				end
+
+				if(letraRomana == "C")
+					proxLetraRomana = numeroRomano[i+1]
+					unless proxLetraRomana.nil?						
+						if(proxLetraRomana == "D" || proxLetraRomana == "M")
+							proxValor = getValor(proxLetraRomana)
+							 soma += proxValor - valor
+							 pularLetra = true
+							 next
+						end			
+
+					end
+
+				end
+
 				soma += valor
 
 			end
