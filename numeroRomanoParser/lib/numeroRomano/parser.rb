@@ -6,6 +6,10 @@ module NumeroRomano
 			soma = 0
 			pularLetra = false
 
+			if verificaNumeroInvalido?(numeroRomano)
+				return "numero invalido"
+			end
+
 			numeroRomano.length.times do |i|
 				if(pularLetra)
 					pularLetra = false
@@ -84,6 +88,10 @@ module NumeroRomano
 			end
 
 		end
+
+		def verificaNumeroInvalido?(numeroRomano)
+			return numeroRomano.include?("IIII") || numeroRomano.include?("XXXX") || numeroRomano.include?("VV") || numeroRomano.include?("LL") || numeroRomano.include?("DD")
+		end	
 
 	end
 end

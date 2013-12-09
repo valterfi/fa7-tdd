@@ -66,7 +66,29 @@ module NumeroRomano
 		expect(romanosParser.parser("CM")).to eql 900
 	end
 
-		
+	it "nao deve permitir converter um numero com a letra I repetida quatro vezes" do
+		expect(romanosParser.parser("IIII")).to eql "numero invalido"
+	end
+
+	it "nao deve permitir converter um numero com a letra X repetida quatro vezes" do
+		expect(romanosParser.parser("XXXX")).to eql "numero invalido"
+	end
+
+	it "nao deve permitir converter um numero com a letra V duplicada" do
+		expect(romanosParser.parser("VV")).to eql "numero invalido"
+	end
+
+	it "nao deve permitir converter um numero com a letra L duplicada" do
+		expect(romanosParser.parser("LL")).to eql "numero invalido"
+	end
+
+	it "nao deve permitir converter um numero com a letra D duplicada" do
+		expect(romanosParser.parser("DD")).to eql "numero invalido"
+	end
+
+	it "deve converter CXXIX corretamente" do
+		expect(romanosParser.parser("CXXIX")).to eql 129
+	end	
 		
 	end
 end
